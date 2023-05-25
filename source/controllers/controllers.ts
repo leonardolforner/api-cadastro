@@ -1,5 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 import {PrismaClient } from "@prisma/client"
+import exp from 'constants';
 const prisma = new PrismaClient();
 
 const getAllUsers =  async (req: Request, res: Response) => {
@@ -9,3 +10,5 @@ const getAllUsers =  async (req: Request, res: Response) => {
     })
     
 }
+
+export default {getAllUsers}
