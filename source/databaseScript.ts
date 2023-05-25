@@ -1,6 +1,8 @@
 import {PrismaClient} from "@prisma/client"
 const prisma = new PrismaClient();
 
+
+(()=> {
 prisma.user.create({
     data:{
         nome: "Leonardo",
@@ -11,4 +13,5 @@ prisma.user.create({
         password:"123",
         ano_entrada:"2021"
     }
-})
+}).catch(error => console.log(error))
+})()
