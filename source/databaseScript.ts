@@ -5,13 +5,13 @@ const prisma = new PrismaClient();
 (()=> {
 prisma.user.create({
     data:{
-        nome: "Leonardo",
-        sobrenome: "Forner",
+        nome: "João Rafael",
+        sobrenome: "Borges de Oliveira",
         curso:"Engenharia de Software",
-        email: "L.forner@edu.pucrs.br",
-        username:"21100996",
-        password:"123",
-        ano_entrada:"2021"
+        email: "j.rafael@edu.pucrs.br",
+        username:"22104394",
+        password:"senhaSecreta",
+        ano_entrada:"2023"
     }
 }).catch(error => console.log(error))
 })()
