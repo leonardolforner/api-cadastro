@@ -25,7 +25,8 @@ const getUser = async (req: Request, res: Response) => {
 
 const updatePassword = async (req:Request, res:Response) => {
     const id = req.params.id;
-    const newPassword = req.body.password;
+    const newPassword = req.body.password??null;
+    console.log(newPassword)
     await prisma.user.update({
         where: {
             id:id
@@ -34,11 +35,14 @@ const updatePassword = async (req:Request, res:Response) => {
             password: newPassword
         }
     })
+    return res.json({
+        message: "senha trocada!"
+    })
 }
 
 const createUser = async (req:Request, res:Response) => {
     const name = req.body.name
-    const lastName = req.body.lasatName;
+    const lastName = req.body.lastName;
     const course = req.body.course;
     const email = req.body.email;
     const username = req.body.username;
@@ -55,6 +59,9 @@ const createUser = async (req:Request, res:Response) => {
             ano_entrada: year
         }
     })
+    return res.json({
+        message: "usuário criado com sucesso!"
+    })
 }
 
 const deleteUser = async (req:Request, res:Response) => {
@@ -63,6 +70,9 @@ const deleteUser = async (req:Request, res:Response) => {
         where:{
             id: id
         }
+    })
+    return res.json({
+        message: "usuário deletado :("
     })
 }
 
