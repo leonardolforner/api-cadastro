@@ -39,6 +39,26 @@ const updatePassword = async (req:Request, res:Response) => {
         message: "senha trocada!"
     })
 }
+const testPassword = async (req:Request, res:Response) =>{
+    const user = req.params.username;
+    const wPassword = req.body.wPassword;
+    let response;
+    const info = await prisma.user.findFirst({
+        where: {
+            username: user
+        }
+    })
+    if(info?.password == wPassword){
+        return res.json({
+            message: "true"
+        })
+    }
+    else{
+        return res.json({
+            message:"false"
+        })
+    }
+}
 
 const createUser = async (req:Request, res:Response) => {
     const name = req.body.name
@@ -76,4 +96,4 @@ const deleteUser = async (req:Request, res:Response) => {
     })
 }
 
-export default {getAllUsers, getUser, updatePassword, createUser, deleteUser}
+export default {getAllUsers, getUser, updatePassword, createUser, deleteUser, testPassword}
